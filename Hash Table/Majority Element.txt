@@ -1,0 +1,92 @@
+// class Solution {
+//     public int majorityElement(int[] nums) {
+//         Arrays.sort(nums);
+//         int n= nums.length;
+        
+//         int currentEle=nums[0];
+//         int currentCount=1;
+            
+//             for(int i=1; i<n; i++){
+//                 if(nums[i]==currentEle){
+//                     currentCount++;
+//                 }else if(currentCount>n/2){
+//                     return currentEle;
+//                     }else{
+//                     currentCount=1;
+//                     currentEle=nums[i];
+//                 }    
+//             }
+//         return currentEle;
+//     }
+// }
+// class Solution {
+//     public int majorityElement(int[] nums) {
+//         Arrays.sort(nums);
+//         int n= nums.length;
+        
+//         int currentEle=nums[0];
+//         int bestEle=nums[0];
+//         int bestCount=0;
+//         int currentCount=1;
+            
+//             for(int i=1; i<n-1; i++){
+//                 if(nums[i]==currentEle){
+//                     currentCount++;
+//                 }else if(currentCount>n/2){
+//                     return currentEle;
+//                     }else{
+//                     currentEle=nums[i];
+//                     if(bestCount<currentCount){
+//                         bestCount=currentCount;
+//                         bestEle=currentEle;
+//                     }else{
+//                          currentCount=1;
+//                     }
+//                 }
+//             }
+//         return bestEle;
+//     }
+// }
+
+class Solution {
+    public int majorityElement(int[] nums) {
+        int majority=nums[0];
+        int count=0;
+        for(int i=0; i<nums.length; i++){
+            if(nums[i]==majority){
+                // majority=nums[i];
+                count++;
+            }else{
+                count--;
+                if(count==0){
+                   majority=nums[i];
+                    count++;
+                }
+            }
+            }
+        return majority;
+    }
+}
+
+// class Solution{
+//       public int majorityElement(int[] nums) {
+//     Arrays.sort(nums);
+//     return nums[nums.length/2];
+// }
+// }
+public int majorityElement2(int[] nums) {
+    Map<Integer, Integer> myMap = new HashMap<Integer, Integer>();
+    //Hashtable<Integer, Integer> myMap = new Hashtable<Integer, Integer>();
+    int ret=0;
+    for (int num: nums) {
+        if (!myMap.containsKey(num))
+            myMap.put(num, 1);
+        else
+            myMap.put(num, myMap.get(num)+1);
+        if (myMap.get(num)>nums.length/2) {
+            ret = num;
+            break;
+        }
+    }
+    return ret;
+}

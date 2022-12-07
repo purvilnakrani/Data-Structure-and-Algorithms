@@ -1,0 +1,48 @@
+// class Solution {
+//     public int pivotIndex(int[] nums) {
+//         for(int i=0; i<nums.length; i++){
+//             int preSum=0;
+//             int postSum=0;
+//             //----------------------
+//              if(i==0){  //edge case
+//                  preSum=(-1)*nums[nums.length-1];
+//                   for(int j=i+1; j<nums.length-1; j++){
+//                   postSum+=nums[j];
+//             }
+//             if(preSum-postSum==0){
+//                 return i;
+//             }
+//              }
+//             //----------------------
+            
+//             for(int j=0; j<i; j++){
+//                 preSum+=nums[j];
+//             }
+//             for(int j=i+1; j<nums.length; j++){
+//                 postSum+=nums[j];
+//             }
+//             if(preSum-postSum==0){
+//                 return i;
+//             }
+//         }
+//         return -1;
+//     }
+// }
+
+    class Solution {
+    public int pivotIndex(int[] nums) {
+        int total=0;
+        for(int ele : nums){
+            total+=ele;
+        }
+        
+        int currentSum=0;
+        for(int i=0; i<nums.length; i++){
+            currentSum+=nums[i];
+            if((currentSum-nums[i])*2 == total-nums[i]){
+                return i;
+            }
+        }
+        return -1;
+    }
+}

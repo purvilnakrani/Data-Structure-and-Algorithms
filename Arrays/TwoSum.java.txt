@@ -1,0 +1,50 @@
+// // also can done in O(n) by Hashmap
+// class Solution {
+//     public int[] twoSum(int[] nums, int target) {
+//         // int[] ans= new int[2];
+        
+//         for(int i=0; i<nums.length-1; i++){
+//             for(int j=i+1; j<nums.length; j++){
+//                 if(nums[i]+nums[j]==target)return new int[]{i,j};
+//             }
+//         }
+//         return new int[]{-1,-1};
+//     }
+// }
+ // int[] ans=new int[2];
+ //        for(int i=0;i<n;i++)
+ //        {
+ //            for(int j=i+1;j<n;j++)
+ //            {
+ //                if(nums[i]+nums[j]==target)
+ //                {
+ //                    ans[0]=i;
+ //                    ans[1]=j;
+ //                    break;
+ //                }
+ //            }
+ //        }
+ //        return ans;
+ //    }
+
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        Set<Integer> set= new HashSet<>();
+        for(int i=0; i<nums.length; i++){
+            set.add(nums[i]);
+        }
+        for(int i=0; i<nums.length; i++){
+            
+            if(set.contains(target-nums[i]) && search(nums,target-nums[i]) !=i){
+                return new int[]{i, search(nums,target-nums[i])};
+            }
+        }
+        return new int[]{-1,-1};
+    }
+    int search(int[] nums, int target){
+        for(int i=0; i<nums.length; i++){
+            if(nums[i]==target)return i;
+        }
+        return -1;
+    }
+}

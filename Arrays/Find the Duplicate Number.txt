@@ -1,0 +1,42 @@
+public class Solution{
+//      public int findDuplicate(int[] nums) {
+//         Set<Integer> set = new HashSet<>();
+//         int len = nums.length;
+//         for (int i = 0; i < len; i++) {
+//             if (set.contains(nums[i])) {
+//                 return nums[i];
+//             }else{
+//                 set.add(nums[i]);
+//             }
+//         }
+
+//         return len;
+//     }
+    public int findDuplicate(int[] nums) {
+        int[] ans= new int[nums.length];
+        for(int i=0; i<nums.length; i++){
+            ans[nums[i]]++;
+        }
+        for(int i=0; i<ans.length; i++){
+            if(ans[i]>=2){
+                return i;
+            }
+}
+        return -1;
+      //   HashMap<Integer,Integer> map= new HashMap();
+      //   for(int i=0; i<nums.length; i++){
+      //       if(map.containsKey(nums[i])){
+      //           map.put(nums[i],map.get(nums[i])+1);
+      //       }else{
+      //           map.put(nums[i],1);
+      //       }
+      //   }
+      //   for(Entry<String, Integer> entry: numbers.entrySet()) {
+      // if(entry.getValue() == 2) {
+      //   return entry.getKey();
+      // }
+      //   }
+      //   // return map.entry.getValue(2);
+            // return -1;
+    }
+}

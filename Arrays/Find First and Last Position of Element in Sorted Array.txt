@@ -1,0 +1,67 @@
+// class Solution {
+//     public int[] searchRange(int[] nums, int target) {
+//         int[] ans = new int[2];
+//         ans[0] = -1;
+//         ans[1] = -1;
+        
+//         if(nums.length==1 && nums[0]==target){
+//             ans[0]= 0;
+//             ans[1]= 0;
+//         }else{
+//         for(int i=0; i<nums.length-1; i++){
+//             if(nums[i]!=nums[i+1]){
+//             if(nums[i]==target){
+//                if(ans[0]==-1){
+//                 ans[0]= i;
+//                 ans[1]= i;
+//                }else{
+//                    ans[1]=i;
+//                }
+//             }
+// // for[2,2] it will not work 2nd 2 will not be in for loop's condition
+// // So, these solution wont work because it will need i+1 or i-1 element for comperision 
+//             }else if(nums[i]==nums[i+1]){
+//                    if(nums[i]==target){
+                       
+//                        if(ans[0]==-1){
+//                            ans[0]=i;
+//                        }else{
+//                            ans[1]=i;
+//                        }
+//                    }
+//                }
+//         }
+//         }
+//        return ans; 
+//     }
+// }
+
+class Solution{
+    public int[] searchRange(int[] nums, int target){
+        int[] ans= new int[2];
+        ans[0]=ans[1]=-1;
+        
+        for(int i=0;i<nums.length;i++){
+            if(nums[i]==target){
+                ans[0]=i;
+                break;
+            }
+        }
+        for(int i=nums.length-1;i>=0;i--){
+            if(nums[i]==target){
+                ans[1]=i;
+                break;
+            }
+        }
+        return ans;
+    }
+}
+
+
+
+
+
+
+
+
+
